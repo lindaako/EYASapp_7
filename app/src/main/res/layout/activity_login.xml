@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="360dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/korloginpage2"
+        tools:Absolutelayout_editor_absoluteX="0dp"
+        tools:Absolutelayout_editor_absoluteY="-6dp" />
+
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="9dp"
+        android:ems="10"
+        android:hint="사용자 이름"
+        android:inputType="textPersonName"
+        android:textColorHint="#2F4F4F"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="암호"
+        android:inputType="textPassword"
+        android:textColorHint="#2F4F4F"
+        app:layout_constraintBottom_toTopOf="@+id/bLogin"
+        app:layout_constraintEnd_toStartOf="@+id/bRegister"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+
+    <Button
+        android:id="@+id/bExit"
+        android:layout_width="98dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="29dp"
+        android:text=""
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bLogin"
+        app:layout_constraintTop_toBottomOf="@+id/bRegister" />
+
+    <Button
+        android:id="@+id/bLogin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="129dp"
+        android:layout_marginEnd="239dp"
+        android:layout_marginBottom="82dp"
+        android:text=""
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bExit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <Button
+        android:id="@+id/bRegister"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="209dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="25dp"
+        android:text=""
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bExit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etPassword"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
