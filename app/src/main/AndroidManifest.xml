@@ -13,7 +13,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +23,14 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:screenOrientation="landscape" />
-        <activity android:name=".UserActivity"></activity>
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".UserActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
