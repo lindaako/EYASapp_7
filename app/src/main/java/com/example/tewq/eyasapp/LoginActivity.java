@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity
 
         final Button bRegister = (Button) findViewById(R.id.bRegister);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
-        final Button bExit = (Button) findViewById(R.id.bExit);
+        //final Button bExit = (Button) findViewById(R.id.bExit);
 
         bRegister.setOnClickListener(new View.OnClickListener()
         {

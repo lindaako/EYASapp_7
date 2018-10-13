@@ -15,7 +15,7 @@ public class UserActivity extends AppCompatActivity
         setContentView(R.layout.activity_user);
 
         Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
+       // String email = intent.getStringExtra("email");
         String username = intent.getStringExtra("username");
         String message = "Welcome" + username;
     }
