@@ -1,6 +1,8 @@
 package com.example.tewq.eyasapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,24 +25,29 @@ public class LoginActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-
-        final Button bRegister = (Button) findViewById(R.id.bRegister);
-        final Button bLogin = (Button) findViewById(R.id.bLogin);
-        //final Button bExit = (Button) findViewById(R.id.bExit);
-
-        bRegister.setOnClickListener(new View.OnClickListener()
+        changepage();
+    }
+        public void changepage()
         {
-            @Override
-            public void onClick(View v)
-            {
-                Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
-            }
 
-        });
+
+            final EditText etUsername = (EditText) findViewById(R.id.etUsername);
+            final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+
+            final Button bLogin = (Button) findViewById(R.id.bLogin);
+            final Button bRegister = (Button) findViewById(R.id.bRegister);
+
+            bRegister.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                    LoginActivity.this.startActivity(registerIntent);
+                }
+
+            });
+
 
         bLogin.setOnClickListener(new View.OnClickListener()
         {
@@ -49,6 +56,7 @@ public class LoginActivity extends AppCompatActivity
             {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response)
