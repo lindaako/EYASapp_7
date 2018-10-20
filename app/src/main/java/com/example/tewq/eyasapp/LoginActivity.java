@@ -1,12 +1,15 @@
 package com.example.tewq.eyasapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -15,40 +18,107 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity
-{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        final Button bLogin = (Button) findViewById(R.id.bLogin);
+        final Button bRegister = (Button) findViewById(R.id.bRegister);
+
+
+        bLogin.setOnClickListener(this);
+        bRegister.setOnClickListener(this);
+
+
+    }
+
+
+    public void clickexit(View v) {
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+
+    @Override
+    public void onClick(View v) {
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
 
-        final Button bRegister = (Button) findViewById(R.id.bRegister);
-        final Button bLogin = (Button) findViewById(R.id.bLogin);
-        //final Button bExit = (Button) findViewById(R.id.bExit);
+        switch (v.getId()) {
 
-        bRegister.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+            case R.id.bRegister:
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
-            }
+                break;
 
-        });
+            case R.id.bLogin:
+                Intent userIntent = new Intent(LoginActivity.this, UserActivity.class);
+                LoginActivity.this.startActivity(userIntent);
+                break;
+               /*
+                final String username = etUsername.getText().toString();
+                final String password = etPassword.getText().toString();
 
-        bLogin.setOnClickListener(new View.OnClickListener()
+                //Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+
+                Response.Listener<String> responseListener = new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        try
+                        {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if (success)
+                            {
+                                String email = jsonResponse.getString("email");
+
+                                Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+
+                                //Intent.putExtra("email",email);
+                                //Intent.putExtra("username",username);
+                                LoginActivity.this.startActivity(intent);
+
+
+                            }
+                            else
+                            {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                builder.setMessage("Login failed")
+                                        .setNegativeButton("Retry", null)
+                                        .create()
+                                        .show();
+                            }
+                        }
+                        catch (JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                LoginRequest loginRequest = new LoginRequest(username, password, responseListener );
+                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                queue.add(loginRequest);
+                break;*/
+        }
+
+
+
+
+        /*bLogin.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response)
@@ -70,13 +140,13 @@ public class LoginActivity extends AppCompatActivity
 
                             }
                             else
-                                {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                    builder.setMessage("Login failed")
-                                            .setNegativeButton("Retry", null)
-                                            .create()
-                                            .show();
-                                }
+                            {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                builder.setMessage("Login failed")
+                                        .setNegativeButton("Retry", null)
+                                        .create()
+                                        .show();
+                            }
                         }
                         catch (JSONException e)
                         {
@@ -89,13 +159,9 @@ public class LoginActivity extends AppCompatActivity
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }
-        });
-    }
+        }); */
 
-    public void clickexit(View v)
-    {
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
+
+
     }
 }
