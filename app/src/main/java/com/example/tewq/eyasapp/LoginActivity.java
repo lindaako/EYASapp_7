@@ -37,11 +37,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
         bLogin.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
+
 
                 // Response received from the server
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -52,11 +57,11 @@ public class LoginActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success) {
-                                String name = jsonResponse.getString("name");
+                                String email = jsonResponse.getString("email");
 
 
                                 Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-                                intent.putExtra("name", name);
+                                intent.putExtra("name", email);
 
                                 intent.putExtra("username", username);
                                 LoginActivity.this.startActivity(intent);
