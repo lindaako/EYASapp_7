@@ -18,150 +18,66 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        final Button bLogin = (Button) findViewById(R.id.bLogin);
-        final Button bRegister = (Button) findViewById(R.id.bRegister);
-
-
-        bLogin.setOnClickListener(this);
-        bRegister.setOnClickListener(this);
-
-
-    }
-
-
-    public void clickexit(View v) {
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
-    }
-
-    @Override
-    public void onClick(View v) {
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final Button bRegister = (Button) findViewById(R.id.bRegister);
+        final Button bLogin = (Button) findViewById(R.id.bLogin);
 
-        switch (v.getId()) {
-
-            case R.id.bRegister:
+        bRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
-                break;
+            }
+        });
 
-            case R.id.bLogin:
-                Intent userIntent = new Intent(LoginActivity.this, UserActivity.class);
-                LoginActivity.this.startActivity(userIntent);
-                break;
-               /*
-                final String username = etUsername.getText().toString();
-                final String password = etPassword.getText().toString();
-
-                //Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
-
-                Response.Listener<String> responseListener = new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        try
-                        {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            if (success)
-                            {
-                                String email = jsonResponse.getString("email");
-
-                                Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-
-                                //Intent.putExtra("email",email);
-                                //Intent.putExtra("username",username);
-                                LoginActivity.this.startActivity(intent);
-
-
-                            }
-                            else
-                            {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login failed")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
-                            }
-                        }
-                        catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-
-                LoginRequest loginRequest = new LoginRequest(username, password, responseListener );
-                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                queue.add(loginRequest);
-                break;*/
-        }
-
-
-
-
-        /*bLogin.setOnClickListener(new View.OnClickListener()
-        {
+        bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
 
+                // Response received from the server
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response)
-                    {
-                        try
-                        {
+                    public void onResponse(String response) {
+                        try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
-                            if (success)
-                            {
-                                String email = jsonResponse.getString("email");
+
+                            if (success) {
+                                String name = jsonResponse.getString("name");
+
 
                                 Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+                                intent.putExtra("name", name);
 
-                                //Intent.putExtra("email",email);
-                                //Intent.putExtra("username",username);
+                                intent.putExtra("username", username);
                                 LoginActivity.this.startActivity(intent);
-
-
-                            }
-                            else
-                            {
+                            } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login failed")
+                                builder.setMessage("Login Failed")
                                         .setNegativeButton("Retry", null)
                                         .create()
                                         .show();
                             }
-                        }
-                        catch (JSONException e)
-                        {
+
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 };
 
-                LoginRequest loginRequest = new LoginRequest(username, password, responseListener );
+                LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }
-        }); */
-
-
-
+        });
     }
 }
