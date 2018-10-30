@@ -14,16 +14,21 @@
         android:src="@drawable/koreanregdroidpage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:Absolutelayout_editor_absoluteX="0dp"
         tools:Absolutelayout_editor_absoluteY="-6dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+
+        android:layout_width="177dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginBottom="38dp"
         android:ems="10"
         android:hint="사용자 이름"
         android:inputType="text"
@@ -31,15 +36,17 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="#2F4F4F"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintBottom_toTopOf="@+id/etConfirmPassword"
+        app:layout_constraintEnd_toEndOf="@+id/etPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="99dp"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="36dp"
         android:ellipsize="end"
         android:ems="10"
         android:gravity="start|center_vertical"
@@ -49,80 +56,85 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="#2F4F4F"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/etUsername"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/etUsername"
+        app:layout_constraintEnd_toEndOf="@+id/etUsername"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etUsername" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="179dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="43dp"
         android:ems="10"
         android:hint="암호"
         android:inputType="textPassword"
         android:textAlignment="viewStart"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="#2F4F4F"
-        app:layout_constraintBottom_toTopOf="@+id/etConfirmPassword"
+        app:layout_constraintEnd_toEndOf="@+id/etConfirmPassword"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etConfirmPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintTop_toTopOf="@+id/etUsername" />
 
     <EditText
         android:id="@+id/etConfirmPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="103dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="19dp"
+        android:layout_width="106dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="비밀번호 확인"
         android:inputType="textPassword"
         android:textAlignment="viewStart"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="#2F4F4F"
-        app:layout_constraintBottom_toTopOf="@+id/bRegister"
-        app:layout_constraintEnd_toStartOf="@+id/bLogin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
-
-    <Button
-        android:id="@+id/bRegister"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="247dp"
-        android:layout_marginBottom="48dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bExit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
-
-    <Button
-
-        android:id="@+id/bExit"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="26dp"
-        android:onClick="clickexit"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bRegister"
-        app:layout_constraintTop_toBottomOf="@+id/bLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <Button
         android:id="@+id/bLogin"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="198dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="49dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/bExit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etConfirmPassword"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="216dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="414dp"
+        android:layout_marginBottom="124dp"
+        android:alpha="0"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="34dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginBottom="82dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:background="@drawable/hg" />
+
+    <Button
+        android:id="@+id/bRegister"
+        android:layout_width="138dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginBottom="40dp"
+        android:alpha="0"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bExit"
+        android:layout_width="94dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="12dp"
+        android:alpha="0"
+        android:onClick="clickexit"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
+

@@ -1,90 +1,125 @@
 package com.example.tewq.eyasapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final Button bRegister = (Button) findViewById(R.id.bRegister);
-        final Button bLogin = (Button) findViewById(R.id.bLogin);
+        Button bLogin, bRegister;
+        EditText etUsername, etPassword;
+        private static String URL  ="http://eyas.epizy.com/login.php";
+        private Snackbar snackbar;
+        private ProgressDialog pd;
 
-        bRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
-            }
-        });
+        @Override
+        protected void onCreate(Bundle savedInstanceState)
+        {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_login);
 
+            etUsername = (EditText) findViewById(R.id.etUsername);
+            etPassword = (EditText) findViewById(R.id.etPassword);
+            pd = new ProgressDialog(LoginActivity.this);
+            bLogin = (Button) findViewById(R.id.bLogin);
+            bRegister = (Button) findViewById(R.id.bRegister);
 
+            bRegister.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v) {
 
-        bLogin.setOnClickListener(new View.OnClickListener() {
+                    Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                    LoginActivity.this.startActivity(registerIntent);
+                }
+            });
 
-
-            @Override
-            public void onClick(View v) {
-                final String username = etUsername.getText().toString();
-                final String password = etPassword.getText().toString();
-
-
-                // Response received from the server
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-
-                            if (success) {
-                                String email = jsonResponse.getString("email");
+            bLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loginRequest();
+                }
+            });
 
 
-                                Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-                                intent.putExtra("name", email);
+        }
 
-                                intent.putExtra("username", username);
-                                LoginActivity.this.startActivity(intent);
-                            } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login Failed")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
+        private void loginRequest(){
+            pd.setMessage("Signing In . . .");
+            pd.show();
+            RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+            String response = null;
+
+            final String finalResponse = response;
+
+            StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
+                    new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response) {
+
+                            pd.hide();
+                            showSnackbar(response);
+
+                            if(response.equals("Login")) {
+
+                                startActivity(new Intent(getApplicationContext(), UserActivity.class));
                             }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
+                        }
+
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // error
+                            pd.hide();
+                            Log.d("ErrorResponse", finalResponse);
+
                         }
                     }
-                };
+            ) {
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String>  params = new HashMap<String, String>();
+                    params.put("username", etUsername.getText().toString());
+                    params.put("password", etPassword.getText().toString());
+                    return params;
+                }
+            };
+            postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            queue.add(postRequest);
 
-                LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                queue.add(loginRequest);
-            }
-        });
-    }
+
+
+        }
+        public void showSnackbar(String stringSnackbar){
+            snackbar.make(findViewById(android.R.id.content), stringSnackbar.toString(), Snackbar.LENGTH_SHORT)
+                    .setActionTextColor(getResources().getColor(R.color.colorPrimary))
+                    .show();
+        }
+
 
     public void clickexit(View v)
     {
