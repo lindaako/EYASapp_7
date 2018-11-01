@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-    private static String S_URL ="https://eyas.epizy.com/signup.php";
+    private static String S_URL ="https://youngashly.000webhostapp.com/signup.php";
     EditText etEmail,etUsername,etPassword;
     Button bRegister, bLogin;
     RadioButton radioButton2;private Snackbar snackbar;   private ProgressDialog pd;

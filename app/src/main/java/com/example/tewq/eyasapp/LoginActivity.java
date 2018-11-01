@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Button bLogin, bRegister;
         EditText etUsername, etPassword;
-        private static String URL  ="http://eyas.epizy.com/login.php";
+        private static String URL  ="https://youngashly.000webhostapp.com/login.php";
         private Snackbar snackbar;
         private ProgressDialog pd;
 
