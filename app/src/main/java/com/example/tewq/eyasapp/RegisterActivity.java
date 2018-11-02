@@ -24,12 +24,13 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     private static String S_URL ="https://youngashly.000webhostapp.com/signup.php";
-    EditText etEmail,etUsername,etPassword;
+    EditText etEmail,etUsername,etPassword,etConfirmPassword;
     Button bRegister, bLogin;
     RadioButton radioButton2;private Snackbar snackbar;   private ProgressDialog pd;
     @Override
@@ -42,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         etEmail = (EditText)findViewById(R.id.etEmail);
         etUsername =(EditText)findViewById(R.id.etUsername);
         etPassword = (EditText)findViewById(R.id.etPassword);
+        etConfirmPassword = (EditText)findViewById(R.id.etConfirmPassword);
         radioButton2 = (RadioButton)findViewById(R.id.radioButton2);
 
         bLogin.setOnClickListener(new View.OnClickListener()
@@ -57,15 +59,30 @@ public class RegisterActivity extends AppCompatActivity {
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(radioButton2.isChecked() == true){
 
-                    signupRequest();
+                String Con_pass = etConfirmPassword.getText().toString();
+                String pass = etPassword.getText().toString();
 
-                }else{
-
-                    Toast.makeText(getApplicationContext(),"Please Accept Terms & Services",Toast.LENGTH_SHORT).show();
+                if(!(pass.equals(Con_pass)))
+                {
+                    Toast.makeText(getApplicationContext(), "The Password and Confirm password must match!", Toast.LENGTH_SHORT).show();
                 }
 
+                else
+                    {
+
+                    if (radioButton2.isChecked())
+                        {
+
+                        signupRequest();
+
+                        }
+                    else
+                        {
+
+                        Toast.makeText(getApplicationContext(), "Please Accept Terms & Services", Toast.LENGTH_SHORT).show();
+                        }
+                    }
             }
         });
     }
