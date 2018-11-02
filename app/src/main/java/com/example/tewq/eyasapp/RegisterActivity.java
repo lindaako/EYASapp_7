@@ -108,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(response.equals("Successfully Signed In"))
                         {
 
-                            startActivity(new Intent(getApplicationContext(), UserActivity.class));
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
 
                         }
                         else

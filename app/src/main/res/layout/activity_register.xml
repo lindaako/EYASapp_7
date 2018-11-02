@@ -105,11 +105,11 @@
 
     <RadioButton
         android:id="@+id/radioButton2"
-        android:layout_width="34dp"
+        android:layout_width="30dp"
         android:layout_height="19dp"
-        android:background="@drawable/hg"
         android:layout_marginStart="110dp"
         android:layout_marginBottom="82dp"
+        android:background="@drawable/hg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:background="@drawable/hg" />
