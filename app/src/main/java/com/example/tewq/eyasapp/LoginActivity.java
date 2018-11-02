@@ -36,11 +36,11 @@ public class LoginActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
 
-            etUsername = (EditText) findViewById(R.id.etUsername);
-            etPassword = (EditText) findViewById(R.id.etPassword);
+            etUsername =  findViewById(R.id.etUsername);
+            etPassword =  findViewById(R.id.etPassword);
             pd = new ProgressDialog(LoginActivity.this);
-            bLogin = (Button) findViewById(R.id.bLogin);
-            bRegister = (Button) findViewById(R.id.bRegister);
+            bLogin = findViewById(R.id.bLogin);
+            bRegister = findViewById(R.id.bRegister);
 
             bRegister.setOnClickListener(new View.OnClickListener()
             {

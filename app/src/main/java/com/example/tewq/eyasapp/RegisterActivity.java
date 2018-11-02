@@ -38,13 +38,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         pd = new ProgressDialog(RegisterActivity.this);
-        bRegister =(Button)findViewById(R.id.bRegister);
-        bLogin = (Button) findViewById(R.id.bLogin);
-        etEmail = (EditText)findViewById(R.id.etEmail);
-        etUsername =(EditText)findViewById(R.id.etUsername);
-        etPassword = (EditText)findViewById(R.id.etPassword);
-        etConfirmPassword = (EditText)findViewById(R.id.etConfirmPassword);
-        radioButton2 = (RadioButton)findViewById(R.id.radioButton2);
+        bRegister = findViewById(R.id.bRegister);
+        bLogin = findViewById(R.id.bLogin);
+        etEmail = findViewById(R.id.etEmail);
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
+        radioButton2 = findViewById(R.id.radioButton2);
 
         bLogin.setOnClickListener(new View.OnClickListener()
         {
