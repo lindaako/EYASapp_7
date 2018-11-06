@@ -62,17 +62,26 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String Con_pass = etConfirmPassword.getText().toString();
                 String pass = etPassword.getText().toString();
+                String uname = etUsername.getText().toString();
+                String e_mail = etEmail.getText().toString();
 
-                if(!(pass.equals(Con_pass)))
+                if ((pass.equals("")) || (uname.equals("")) || (e_mail.equals("")) || (Con_pass.equals("")))
                 {
-                    Toast.makeText(getApplicationContext(), "The Password and Confirm password must match!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please fill in all the required fields!", Toast.LENGTH_SHORT).show();
                 }
 
                 else
                     {
 
+                if (!(pass.equals(Con_pass)))
+                    {
+                    Toast.makeText(getApplicationContext(), "The Password and Confirm password must match!", Toast.LENGTH_SHORT).show();
+                    }
+                else
+                    {
+
                     if (radioButton2.isChecked())
-                        {
+                         {
 
                         signupRequest();
 
@@ -82,7 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(), "Please Accept Terms & Services", Toast.LENGTH_SHORT).show();
                         }
-                    }
+                     }
+                 }
             }
         });
     }
