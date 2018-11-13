@@ -26,7 +26,8 @@ public class LoginActivity extends AppCompatActivity {
 
         Button bLogin, bRegister;
         EditText etUsername, etPassword;
-        private static String URL  ="https://youngashly.000webhostapp.com/login.php";
+        //private static String URL  ="https://youngashly.000webhostapp.com/login.php";
+        private static String URL ="http://eyas.dx.am/login.php";
         private Snackbar snackbar;
         private ProgressDialog pd;
 
@@ -79,7 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                             pd.hide();
                             showSnackbar(response);
 
-                            if(response.equals("Login")) {
+                            if(response.equals("Login"))
+                            {
 
                                 startActivity(new Intent(getApplicationContext(), UserActivity.class));
                             }

@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -27,9 +28,11 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
-    private static String S_URL ="https://youngashly.000webhostapp.com/signup.php";
+    //private static String S_URL ="https://youngashly.000webhostapp.com/signup.php";
+    private static String S_URL ="http://eyas.dx.am/signup.php";
     EditText etEmail,etUsername,etPassword,etConfirmPassword;
     Button bRegister, bLogin;
     RadioButton radioButton2;private Snackbar snackbar;   private ProgressDialog pd;
@@ -68,6 +71,11 @@ public class RegisterActivity extends AppCompatActivity {
                 if ((pass.equals("")) || (uname.equals("")) || (e_mail.equals("")) || (Con_pass.equals("")))
                 {
                     Toast.makeText(getApplicationContext(), "Please fill in all the required fields!", Toast.LENGTH_SHORT).show();
+                }
+
+                else if(!(Patterns.EMAIL_ADDRESS.matcher(e_mail).matches()))
+                {
+                    Toast.makeText(getApplicationContext(), "Invalid email address!", Toast.LENGTH_SHORT).show();
                 }
 
                 else
@@ -123,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         else
                             {
-                                Toast.makeText(getApplicationContext(),"here",Toast.LENGTH_SHORT).show();
+
                             }
                     }
                 },
