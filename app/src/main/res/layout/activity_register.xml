@@ -61,6 +61,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etUsername" />
 
+
+    <cyd.awesome.material.AwesomeText
+        android:id="@+id/pwd_show_hide"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="6dp"
+        android:textColor="#2F4F4F"
+        android:textSize="20sp"
+        app:awesome_font="material_design"
+        app:awesome_icon="MD_VISIBILITY_OFF"
+        app:layout_constraintBottom_toTopOf="@+id/etConfirmPassword"
+        app:layout_constraintStart_toEndOf="@+id/etPassword" />
+
+
+
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="225dp"

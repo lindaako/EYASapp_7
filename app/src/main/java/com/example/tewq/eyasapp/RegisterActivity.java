@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -29,12 +30,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import cyd.awesome.material.AwesomeText;
+import cyd.awesome.material.FontCharacterMaps;
 
 public class RegisterActivity extends AppCompatActivity {
     //private static String S_URL ="https://youngashly.000webhostapp.com/signup.php";
     private static String S_URL ="http://eyas.dx.am/signup.php";
     EditText etEmail,etUsername,etPassword,etConfirmPassword;
     Button bRegister, bLogin;
+    AwesomeText show_hide_ic;
+    boolean pwd_status = true;
     RadioButton radioButton2;private Snackbar snackbar;   private ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +51,27 @@ public class RegisterActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
+        show_hide_ic = (AwesomeText) findViewById(R.id.pwd_show_hide);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
         radioButton2 = findViewById(R.id.radioButton2);
+
+        show_hide_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (pwd_status) {
+                    etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    pwd_status = false;
+                    show_hide_ic.setMaterialDesignIcon(FontCharacterMaps.MaterialDesign.MD_VISIBILITY);
+                    etPassword.setSelection(etPassword.length());
+                } else {
+                    etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+                    pwd_status = true;
+                    show_hide_ic.setMaterialDesignIcon(FontCharacterMaps.MaterialDesign.MD_VISIBILITY_OFF);
+                    etPassword.setSelection(etPassword.length());
+
+                }
+            }
+        });
 
         bLogin.setOnClickListener(new View.OnClickListener()
         {
