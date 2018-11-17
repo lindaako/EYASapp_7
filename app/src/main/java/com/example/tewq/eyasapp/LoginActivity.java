@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Button bLogin, bRegister;
         EditText etUsername, etPassword;
+        TextView etForgotPassword;
         //private static String URL  ="https://youngashly.000webhostapp.com/login.php";
         private static String URL ="http://eyas.dx.am/login.php";
         private Snackbar snackbar;
@@ -37,11 +38,22 @@ public class LoginActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
 
+            etForgotPassword = findViewById(R.id.etForgotPassword);
             etUsername =  findViewById(R.id.etUsername);
             etPassword =  findViewById(R.id.etPassword);
             pd = new ProgressDialog(LoginActivity.this);
             bLogin = findViewById(R.id.bLogin);
             bRegister = findViewById(R.id.bRegister);
+
+            etForgotPassword.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v) {
+
+                    Intent forgotpassIntent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                    LoginActivity.this.startActivity(forgotpassIntent);
+                }
+            });
 
             bRegister.setOnClickListener(new View.OnClickListener()
             {

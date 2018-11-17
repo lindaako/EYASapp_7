@@ -36,7 +36,7 @@ import cyd.awesome.material.FontCharacterMaps;
 public class RegisterActivity extends AppCompatActivity {
     //private static String S_URL ="https://youngashly.000webhostapp.com/signup.php";
     private static String S_URL ="http://eyas.dx.am/signup.php";
-    EditText etEmail,etUsername,etPassword,etConfirmPassword;
+    EditText etEmail,etUsername,etPassword,etConfirmPassword,etAge;
     Button bRegister, bLogin;
     AwesomeText show_hide_ic;
     boolean pwd_status = true;
@@ -48,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         pd = new ProgressDialog(RegisterActivity.this);
         bRegister = findViewById(R.id.bRegister);
         bLogin = findViewById(R.id.bLogin);
+        etAge = findViewById(R.id.etAge);
         etEmail = findViewById(R.id.etEmail);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -91,8 +92,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass = etPassword.getText().toString();
                 String uname = etUsername.getText().toString();
                 String e_mail = etEmail.getText().toString();
+                String s_age = etAge.getText().toString();
 
-                if ((pass.equals("")) || (uname.equals("")) || (e_mail.equals("")) || (Con_pass.equals("")))
+                if ((pass.equals("")) || (uname.equals("")) || (e_mail.equals("")) || (Con_pass.equals("")) || (s_age.equals("")) )
                 {
                     Toast.makeText(getApplicationContext(), "Please fill in all the required fields!", Toast.LENGTH_SHORT).show();
                 }
@@ -178,6 +180,7 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put("email", etEmail.getText().toString());
                 params.put("password", etPassword.getText().toString());
                 params.put("username", etUsername.getText().toString());
+                params.put("age", etAge.getText().toString());
 
                 return params;
             }

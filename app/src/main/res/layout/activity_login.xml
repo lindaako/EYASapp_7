@@ -93,4 +93,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/etPassword"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/etForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
+        android:layout_marginBottom="55dp"
+        android:text="비밀번호를 잊으 셨나요?"
+        android:textColor="@color/bootstrap_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

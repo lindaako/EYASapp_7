@@ -11,7 +11,7 @@
         android:id="@+id/gifImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/koreanregdroidpage"
+        android:src="@drawable/registerkoreangif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -25,7 +25,7 @@
     <EditText
         android:id="@+id/etUsername"
 
-        android:layout_width="225dp"
+        android:layout_width="93dp"
         android:layout_height="52dp"
         android:layout_marginTop="134dp"
         android:layout_marginBottom="38dp"
@@ -37,16 +37,14 @@
         android:textColorHint="#2F4F4F"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/etConfirmPassword"
-        app:layout_constraintEnd_toEndOf="@+id/etPassword"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etPassword"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="225dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="36dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="44dp"
         android:ellipsize="end"
         android:ems="10"
         android:gravity="start|center_vertical"
@@ -127,7 +125,6 @@
         android:layout_height="19dp"
         android:layout_marginStart="110dp"
         android:layout_marginBottom="82dp"
-        android:background="@drawable/hg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:background="@drawable/hg" />
@@ -154,6 +151,21 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etAge"
+        android:layout_width="110dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="135dp"
+        android:ems="10"
+        android:hint="나이"
+        android:inputType="number"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="#2F4F4F"
+        app:layout_constraintStart_toEndOf="@+id/etUsername"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
 
