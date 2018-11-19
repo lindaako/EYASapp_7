@@ -42,6 +42,24 @@ public class LoginActivity extends AppCompatActivity {
         private AlertDialog.Builder alert;
 
 
+        public static class Singleton
+        {
+        private  static Singleton instance = null;
+        protected Singleton()
+        {
+            // Exists only to defeat instantiation.
+        }
+        public static Singleton getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new Singleton();
+            }
+            return instance;
+        }
+        }
+
+    Singleton e_mail=Singleton.getInstance();
 
         @Override
         protected void onCreate(Bundle savedInstanceState)
@@ -157,6 +175,8 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     Map<String, String>  params = new HashMap<String, String>();
                     params.put("email", edittext.getText().toString());
+
+                    String e_mail = edittext.getText().toString();
                     return params;
 
                 }
