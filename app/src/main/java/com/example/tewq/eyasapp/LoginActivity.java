@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         //private static String URL  ="https://youngashly.000webhostapp.com/login.php";
         private static String URL ="http://eyas.dx.am/login.php";
         private static String URL2 ="http://eyas.dx.am/emailcheck.php";
+        private Snackbar snack;
         private Snackbar snackbar;
         private ProgressDialog pd;
         private ProgressDialog em;
@@ -45,10 +46,29 @@ public class LoginActivity extends AppCompatActivity {
         public static class Singleton
         {
         private  static Singleton instance = null;
+        private int data;
+        private String e_mail;
         protected Singleton()
         {
+
             // Exists only to defeat instantiation.
         }
+
+        public void setData(int d)
+        {
+            this.data=d;
+        }
+        public void setString(String s)
+            {
+                this.e_mail=s;
+            }
+
+        public int getData() { return this.data; }
+        public String getString()
+            {
+                return this.e_mail;
+            }
+
         public static Singleton getInstance()
         {
             if(instance == null)
@@ -59,7 +79,9 @@ public class LoginActivity extends AppCompatActivity {
         }
         }
 
-    Singleton e_mail=Singleton.getInstance();
+
+        Singleton e_mail=Singleton.getInstance();
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState)
@@ -109,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
+
             bRegister.setOnClickListener(new View.OnClickListener()
             {
                 @Override
@@ -119,32 +142,104 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
-            bLogin.setOnClickListener(new View.OnClickListener() {
+            bLogin.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     loginRequest();
                 }
-            });
+                });
+
 
 
         }
 
-        private void emailcheck ()
+
+
+    private void loginRequest()
+    {
+        pd.setMessage("Signing In . . .");
+        pd.show();
+        RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+        String response = null;
+
+        final String finalResponse = response;
+
+        StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+
+                        pd.hide();
+                        //showSnackbar(response);
+
+                        if(response.equals("Login"))
+                        {
+                            showSnackbar("Login Successful");
+                            //Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), UserActivity.class));
+                        }
+
+                        else{
+                            showSnackbar("Invalid Login credentials!");
+
+                        }
+
+
+                    }
+
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        pd.hide();
+                        Log.d("ErrorResponse", finalResponse);
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("username", etUsername.getText().toString());
+                params.put("password", etPassword.getText().toString());
+                return params;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(postRequest);
+
+    }
+
+
+    public void showSnackbar(String stringSnackbar){
+        snackbar.make(findViewById(android.R.id.content), stringSnackbar.toString(), Snackbar.LENGTH_SHORT)
+                .setActionTextColor(getResources().getColor(R.color.colorPrimary))
+                .show();
+    }
+
+
+    private void emailcheck ()
         {
-            em.setMessage("Checking for existence . . .");
+            em.setMessage("Checking for emails existence . . .");
             em.show();
-            RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+            RequestQueue queue2 = Volley.newRequestQueue(LoginActivity.this);
 
             String response2 = null;
             final String finalResponse2 = response2;
-            StringRequest postRequest = new StringRequest(Request.Method.POST,URL2,
+            StringRequest postRequest2 = new StringRequest(Request.Method.POST, URL2,
                     new Response.Listener<String>()
                     {
                         @Override
                         public void onResponse(String response2) {
 
                             em.hide();
-                            showSnackbar(response2);
+                            showSnackbar2(response2);
 
                             if(response2.equals("Email exists"))
                             {
@@ -152,19 +247,23 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
 
                             }
-                            else{}
+                            else
+                                {
+
+                            }
 
                         }
 
                     },
+
                     new Response.ErrorListener()
                     {
                         @Override
-                        public void onErrorResponse(VolleyError error)
+                        public void onErrorResponse(VolleyError error2)
                         {
                             // error
                             em.hide();
-                            Log.d("ErrorResponse", finalResponse2);
+                            Log.d("ErrorResponse2", finalResponse2);
 
 
                         }
@@ -175,74 +274,22 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     Map<String, String>  params = new HashMap<String, String>();
                     params.put("email", edittext.getText().toString());
+                    e_mail.setString(edittext.getText().toString());
 
-                    String e_mail = edittext.getText().toString();
                     return params;
 
                 }
             };
-            postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            queue.add(postRequest);
+            postRequest2.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            queue2.add(postRequest2);
 
         }
 
 
-    private void loginRequest(){
-            pd.setMessage("Signing In . . .");
-            pd.show();
-            RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
 
-        String response = null;
-        final String finalResponse = response;
-            StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
-                    new Response.Listener<String>()
-                    {
-                        @Override
-                        public void onResponse(String response) {
-
-                            pd.hide();
-                            showSnackbar(response);
-
-                            if(response.equals("Login"))
-                            {
-
-                                startActivity(new Intent(getApplicationContext(), UserActivity.class));
-                            }
-
-
-                        }
-
-                    },
-                    new Response.ErrorListener()
-                    {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // error
-                            pd.hide();
-                            Log.d("ErrorResponse", finalResponse);
-
-                        }
-                    }
-            ) {
-                @Override
-                protected Map<String, String> getParams()
-                {
-                    Map<String, String>  params = new HashMap<String, String>();
-                    params.put("username", etUsername.getText().toString());
-                    params.put("password", etPassword.getText().toString());
-                    return params;
-                }
-            };
-            postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            queue.add(postRequest);
-
-
-
-        }
-
-
-        public void showSnackbar(String stringSnackbar){
-            snackbar.make(findViewById(android.R.id.content), stringSnackbar.toString(), Snackbar.LENGTH_SHORT)
+        public void showSnackbar2(String stringSnackbar2)
+        {
+            snack.make(findViewById(android.R.id.content), stringSnackbar2.toString(), Snackbar.LENGTH_SHORT)
                     .setActionTextColor(getResources().getColor(R.color.colorPrimary))
                     .show();
         }
