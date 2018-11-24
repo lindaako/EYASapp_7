@@ -31,10 +31,13 @@ import java.util.Map;
 
 public class ForgotPasswordActivity extends AppCompatActivity
 {
+    LoginActivity.Singleton pass_reset=LoginActivity.Singleton.getInstance();
+    final String passwordResetCodes = pass_reset.getCodeString();
     private static String URL ="http://eyas.dx.am/login.php";
     LoginActivity.Singleton e_mail=LoginActivity.Singleton.getInstance();
     final String user_email = e_mail.getString();
-    EditText etEmail;
+    EditText etEmail, etPassResetCode,etNewPassword;
+    Button bResetPassword;
 
 
     @Override
@@ -44,6 +47,32 @@ public class ForgotPasswordActivity extends AppCompatActivity
         setContentView(R.layout.activity_forgot_password);
         etEmail =  findViewById(R.id.etEmail);
         etEmail.setText(user_email);
+
+        etPassResetCode =  findViewById(R.id.etPassResetCode);
+        etNewPassword =  findViewById(R.id.etNewPassword);
+        bResetPassword = findViewById(R.id.bResetPassword);
+
+
+        bResetPassword.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                String PRcode = etPassResetCode.getText().toString();
+                String passwordResetCode = String.valueOf(passwordResetCodes);
+
+        if ((passwordResetCode.equals(PRcode)))
+        {
+            Toast.makeText(getApplicationContext(), "The codes match!", Toast.LENGTH_SHORT).show();
+        }
+
+        else
+            {
+                Toast.makeText(getApplicationContext(), "The codes do not match,try again!", Toast.LENGTH_SHORT).show();
+            }
+            }
+
+        });
     }
 
 

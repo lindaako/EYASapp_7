@@ -56,7 +56,7 @@ public class UserActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                training.setData(0);
+                training.setData(1);
                 Intent trainingIntent = new Intent(UserActivity.this, TrainingModeActivity2.class);
                 UserActivity.this.startActivity(trainingIntent);
             }
@@ -67,7 +67,7 @@ public class UserActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                training.setData(1);
+                training.setData(0);
                 Intent trainingIntent = new Intent(UserActivity.this, TrainingModeActivity2.class);
                 UserActivity.this.startActivity(trainingIntent);
             }

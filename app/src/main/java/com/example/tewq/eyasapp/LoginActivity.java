@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.UUID;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -34,6 +35,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         TextView etForgotPassword;
         EditText edittext;
         GMailSender sender;
+
+        String id = null;
 
         //private static String URL  ="https://youngashly.000webhostapp.com/login.php";
         private static String URL ="http://eyas.dx.am/login.php";
@@ -58,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         private  static Singleton instance = null;
         private int data;
         private String e_mail;
+        private String pass_reset;
         protected Singleton()
         {
 
@@ -72,12 +77,17 @@ public class LoginActivity extends AppCompatActivity {
             {
                 this.e_mail=s;
             }
+        public void setCodeString(String cc)
+            {
+                this.pass_reset=cc;
+            }
 
         public int getData() { return this.data; }
         public String getString()
             {
                 return this.e_mail;
             }
+        public String getCodeString() { return this.pass_reset;}
 
         public static Singleton getInstance()
         {
@@ -91,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         Singleton e_mail=Singleton.getInstance();
+        Singleton pass_reset=Singleton.getInstance();
 
 
         @Override
@@ -266,12 +277,14 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
+
+
     class MyAsyncClass extends AsyncTask<Void, Void, Void> {
 
 
 
         ProgressDialog pDialog;
-
 
 
         @Override
@@ -298,10 +311,15 @@ public class LoginActivity extends AppCompatActivity {
 
         protected Void doInBackground(Void... mApi) {
 
+
+            id = UUID.randomUUID().toString();
+            String code = id.substring(0, 7);
+            pass_reset.setCodeString(code);
+
             try {
 
                 String user_email = e_mail.getString();
-                String code = "1234";
+
                 String subject = "Your password reset code";
                 String messages = "Dear User,"+ '\n'+'\n'+
                         "Your password reset code is " + code + " .Enter it within 5 minutes or it will expire" + '\n'+'\n'+
