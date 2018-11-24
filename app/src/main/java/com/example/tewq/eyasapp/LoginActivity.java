@@ -5,11 +5,15 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.CountDownTimer;
+import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +28,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Properties;
+
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         EditText etUsername, etPassword;
         TextView etForgotPassword;
         EditText edittext;
+        GMailSender sender;
+
         //private static String URL  ="https://youngashly.000webhostapp.com/login.php";
         private static String URL ="http://eyas.dx.am/login.php";
         private static String URL2 ="http://eyas.dx.am/emailcheck.php";
@@ -224,6 +234,120 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    public void sendEmailpuk() {
+
+
+
+             sender = new GMailSender("noreply.eyasapp@gmail.com", "YBqak56jKj6xtLx");
+            //sender = new GMailSender("danielleleeveisella@gmail.com", "SteepPathsAhead45");
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
+        try {
+
+            new MyAsyncClass().execute();
+
+
+
+        } catch (Exception ex) {
+
+           // Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_SHORT).show();
+
+
+        }
+
+
+
+
+
+
+
+    }
+
+    class MyAsyncClass extends AsyncTask<Void, Void, Void> {
+
+
+
+        ProgressDialog pDialog;
+
+
+
+        @Override
+
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+
+
+
+            pDialog = new ProgressDialog(LoginActivity.this);
+
+            pDialog.setMessage("Please wait...");
+
+            pDialog.show();
+
+
+
+        }
+
+
+
+        @Override
+
+        protected Void doInBackground(Void... mApi) {
+
+            try {
+
+                String user_email = e_mail.getString();
+                String code = "1234";
+                String subject = "Your password reset code";
+                String messages = "Dear User,"+ '\n'+'\n'+
+                        "Your password reset code is " + code + " .Enter it within 5 minutes or it will expire" + '\n'+'\n'+
+                        "Best Regards," + '\n'+
+                        "EYAS team";
+
+
+                // Add subject, Body, your mail Id, and receiver mail Id.
+
+                sender.sendMail(subject, messages, "noreply.eyasapp@gmail.com", user_email);
+
+
+
+
+
+            }
+
+
+
+            catch (Exception ex) {
+
+
+
+            }
+
+            return null;
+
+        }
+
+
+
+        @Override
+
+        protected void onPostExecute(Void result) {
+
+            super.onPostExecute(result);
+
+            pDialog.cancel();
+
+           // Toast.makeText(getApplicationContext(), "Email send", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+    }
+
     private void emailcheck ()
         {
             em.setMessage("Checking for emails existence . . .");
@@ -243,8 +367,22 @@ public class LoginActivity extends AppCompatActivity {
 
                             if(response2.equals("Email exists"))
                             {
+                                sendEmailpuk();
 
-                                startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
+                                new CountDownTimer(2000,1000)
+                                {
+                                    public void onFinish()
+                                    {
+                                        startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
+                                    }
+
+                                    public void onTick(long millisUntilFinished)
+                                    {
+
+                                    }
+
+                                }.start();
+
 
                             }
                             else
@@ -276,7 +414,10 @@ public class LoginActivity extends AppCompatActivity {
                     params.put("email", edittext.getText().toString());
                     e_mail.setString(edittext.getText().toString());
 
+
+
                     return params;
+
 
                 }
             };
@@ -284,6 +425,7 @@ public class LoginActivity extends AppCompatActivity {
             queue2.add(postRequest2);
 
         }
+
 
 
 

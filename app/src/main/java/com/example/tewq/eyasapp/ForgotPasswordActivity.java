@@ -1,6 +1,7 @@
 package com.example.tewq.eyasapp;
 
 import android.app.AlertDialog;
+import android.net.Uri;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -49,4 +50,7 @@ public class ForgotPasswordActivity extends AppCompatActivity
 
 
 
-}
+
+
+
+    }
