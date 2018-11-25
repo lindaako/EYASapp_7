@@ -47,12 +47,10 @@
         android:id="@+id/bAssessmentmode"
         android:layout_width="232dp"
         android:layout_height="53dp"
-        android:layout_marginStart="380dp"
-        android:layout_marginTop="155dp"
         android:alpha="0"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="380dp"
+        tools:layout_editor_absoluteY="155dp" />
 
     <Button
         android:id="@+id/bExit"

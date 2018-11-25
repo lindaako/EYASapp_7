@@ -41,14 +41,9 @@ public class UserActivity extends AppCompatActivity
 
         final LoginActivity.Singleton training = LoginActivity.Singleton.getInstance();
 
-        Intent intent = getIntent();
-       // String email = intent.getStringExtra("email");
-        String username = intent.getStringExtra("username");
-        String message = "Welcome" + username;
 
-
-        bAssessmentmode = findViewById(R.id.bAssessmentmode);
         bTrainingmode = findViewById(R.id.bTrainingmode);
+        bAssessmentmode = findViewById(R.id.bAssessmentmode);
         bResults = findViewById(R.id.bResults);
 
         bTrainingmode.setOnClickListener(new View.OnClickListener()
@@ -56,7 +51,7 @@ public class UserActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                training.setData(1);
+                training.setData(0);
                 Intent trainingIntent = new Intent(UserActivity.this, TrainingModeActivity2.class);
                 UserActivity.this.startActivity(trainingIntent);
             }
@@ -67,7 +62,7 @@ public class UserActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                training.setData(0);
+                training.setData(1);
                 Intent trainingIntent = new Intent(UserActivity.this, TrainingModeActivity2.class);
                 UserActivity.this.startActivity(trainingIntent);
             }

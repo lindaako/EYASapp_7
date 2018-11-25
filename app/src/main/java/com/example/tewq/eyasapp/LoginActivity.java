@@ -249,8 +249,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-             sender = new GMailSender("noreply.eyasapp@gmail.com", "YBqak56jKj6xtLx");
-            //sender = new GMailSender("danielleleeveisella@gmail.com", "SteepPathsAhead45");
+             //sender = new GMailSender("noreply.eyasapp@gmail.com", "YBqak56jKj6xtLx");
+            sender = new GMailSender("danielleleeveisella@gmail.com", "SteepPathsAhead45");
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -329,7 +329,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 // Add subject, Body, your mail Id, and receiver mail Id.
 
-                sender.sendMail(subject, messages, "noreply.eyasapp@gmail.com", user_email);
+               // sender.sendMail(subject, messages, "noreply.eyasapp@gmail.com", user_email);
+                sender.sendMail(subject, messages, "danielleleeveisella@gmail.com", user_email);
 
 
 

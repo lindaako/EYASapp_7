@@ -71,12 +71,12 @@ public class TrainingModeActivity2 extends AppCompatActivity
         String trainingno = String.valueOf(data);
         textView = findViewById(R.id.textView);
 
-        if ((trainingno.equals("0")))
+        if ((trainingno.equals("1")))
         {
             //assessement mode
             textView.setText("Assessement Mode");
         }
-        else if ((trainingno.equals("1")))
+        else if ((trainingno.equals("0")))
         {
             //training mode
             textView.setText("Training Mode");
