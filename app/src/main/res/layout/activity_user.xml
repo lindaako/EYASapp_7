@@ -27,7 +27,7 @@
         android:layout_height="54dp"
         android:layout_marginStart="380dp"
         android:layout_marginBottom="234dp"
-        android:alpha="0"
+        android:alpha="0.5"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,10 +47,12 @@
         android:id="@+id/bAssessmentmode"
         android:layout_width="232dp"
         android:layout_height="53dp"
-        android:alpha="0"
+        android:layout_marginStart="376dp"
+        android:layout_marginBottom="144dp"
+        android:alpha="0.5"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="380dp"
-        tools:layout_editor_absoluteY="155dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bExit"
