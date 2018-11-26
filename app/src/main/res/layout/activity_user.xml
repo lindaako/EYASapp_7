@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/colorPrimaryDark"
-        android:src="@drawable/mainpagekorean"
+        android:src="@drawable/three"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,45 +23,66 @@
 
     <Button
         android:id="@+id/bTrainingmode"
-        android:layout_width="230dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="380dp"
-        android:layout_marginBottom="234dp"
-        android:alpha="0"
+        android:layout_width="214dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginBottom="208dp"
+        android:background="@drawable/k"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bResults"
-        android:layout_width="233dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="380dp"
-        android:layout_marginBottom="112dp"
-        android:alpha="0"
+        android:layout_width="214dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/m"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bAssessmentmode"
-        android:layout_width="232dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="376dp"
-        android:layout_marginBottom="144dp"
-        android:alpha="0"
+        android:layout_width="214dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/l"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bLogout"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="436dp"
+        android:layout_marginBottom="300dp"
+        android:background="@drawable/j"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bBack"
+        android:layout_width="35dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="292dp"
+        android:background="@drawable/b"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bExit"
-        android:layout_width="85dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="35dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="296dp"
+        android:background="@drawable/a"
         android:onClick="clickexit"
-        android:alpha="0"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

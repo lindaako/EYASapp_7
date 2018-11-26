@@ -13,17 +13,29 @@ public class TrainingModeActivity2 extends AppCompatActivity
     final LoginActivity.Singleton training = LoginActivity.Singleton.getInstance();
     final int data=training.getData();
     TextView textView;
-    Button bLogout,bMind,bAuditory,bVision;
+    Button bLogout, bMind, bAuditory, bVision, bBack;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_mode2);
 
+
+        bBack=findViewById(R.id.bBack);
         bAuditory=findViewById(R.id.bAuditory);
         bVision=findViewById(R.id.bVision);
         bMind=findViewById(R.id.bMind);
         bLogout=findViewById(R.id.bLogout);
+
+        bBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                Intent backIntent = new Intent(TrainingModeActivity2.this, UserActivity.class);
+                TrainingModeActivity2.this.startActivity(backIntent);
+            }
+        });
 
         bLogout.setOnClickListener(new View.OnClickListener()
         {
@@ -41,8 +53,8 @@ public class TrainingModeActivity2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 //go to Auditory page
-                Intent logoutIntent = new Intent(TrainingModeActivity2.this, LoginActivity.class);
-                TrainingModeActivity2.this.startActivity(logoutIntent);
+                Intent auditoryIntent = new Intent(TrainingModeActivity2.this, LoginActivity.class);
+                TrainingModeActivity2.this.startActivity(auditoryIntent);
             }
         });
 
@@ -51,8 +63,8 @@ public class TrainingModeActivity2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 //go to Visual page
-                Intent logoutIntent = new Intent(TrainingModeActivity2.this, LoginActivity.class);
-                TrainingModeActivity2.this.startActivity(logoutIntent);
+                Intent visualIntent = new Intent(TrainingModeActivity2.this, VisualActivity.class);
+                TrainingModeActivity2.this.startActivity(visualIntent);
             }
         });
 
@@ -61,8 +73,8 @@ public class TrainingModeActivity2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 //go to information processing page
-                Intent logoutIntent = new Intent(TrainingModeActivity2.this, LoginActivity.class);
-                TrainingModeActivity2.this.startActivity(logoutIntent);
+                Intent mindIntent = new Intent(TrainingModeActivity2.this, MindActivity.class);
+                TrainingModeActivity2.this.startActivity(mindIntent);
             }
         });
 

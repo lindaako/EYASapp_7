@@ -17,91 +17,90 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/korloginpage2"
+        app:srcCompat="@drawable/two"
         tools:Absolutelayout_editor_absoluteX="0dp"
         tools:Absolutelayout_editor_absoluteY="-6dp" />
 
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/d"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="사용자 이름"
         android:inputType="textPersonName"
         android:textColorHint="#2F4F4F"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintEnd_toEndOf="@+id/bLogin"
+        app:layout_constraintStart_toStartOf="@+id/bRegister"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="111dp"
-        android:layout_marginEnd="66dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/f"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="암호"
         android:inputType="textPassword"
         android:textColorHint="#2F4F4F"
-        app:layout_constraintBottom_toTopOf="@+id/bLogin"
-        app:layout_constraintEnd_toStartOf="@+id/bRegister"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bRegister"
+        app:layout_constraintEnd_toEndOf="@+id/etUsername"
+        app:layout_constraintStart_toStartOf="@+id/etUsername"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <Button
         android:id="@+id/bExit"
-        android:layout_width="101dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="19dp"
-        android:alpha="0"
-        android:text=""
-        android:visibility="visible"
+        android:layout_width="35dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="540dp"
+        android:layout_marginBottom="300dp"
+        android:background="@drawable/a"
         android:onClick="clickexit"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bRegister" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bLogin"
-        android:layout_width="135dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="82dp"
-        android:alpha="0"
-        android:text=""
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="201dp"
+        android:background="@drawable/h"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/bRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bRegister" />
 
     <Button
         android:id="@+id/bRegister"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="217dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="23dp"
-        android:alpha="0"
-        android:text=""
+        android:layout_marginStart="195dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/g"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/bExit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etPassword"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/etForgotPassword"
+        app:layout_constraintEnd_toStartOf="@+id/bLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <TextView
         android:id="@+id/etForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="147dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="78dp"
         android:text="비밀번호를 잊으 셨나요?"
         android:textColor="@color/bootstrap_default"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/bLogin"
+        app:layout_constraintStart_toStartOf="@+id/bLogin"
+        app:layout_constraintTop_toBottomOf="@+id/bRegister" />
 </android.support.constraint.ConstraintLayout>

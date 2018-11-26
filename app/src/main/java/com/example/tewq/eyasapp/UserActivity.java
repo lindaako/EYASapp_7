@@ -30,7 +30,7 @@ import java.util.Map;
 public class UserActivity extends AppCompatActivity
 {
 
-    Button bAssessmentmode,bTrainingmode,bResults;
+    Button bAssessmentmode,bTrainingmode,bResults,bLogout,bBack;
 
 
     @Override
@@ -41,10 +41,31 @@ public class UserActivity extends AppCompatActivity
 
         final LoginActivity.Singleton training = LoginActivity.Singleton.getInstance();
 
-
+        bBack = findViewById(R.id.bBack);
         bTrainingmode = findViewById(R.id.bTrainingmode);
         bAssessmentmode = findViewById(R.id.bAssessmentmode);
+        bLogout = findViewById(R.id.bLogout);
         bResults = findViewById(R.id.bResults);
+
+        bBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                Intent backIntent = new Intent(UserActivity.this, LoginActivity.class);
+                UserActivity.this.startActivity(backIntent);
+            }
+        });
+
+        bLogout.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                Intent logoutIntent = new Intent(UserActivity.this, LoginActivity.class);
+                UserActivity.this.startActivity(logoutIntent);
+            }
+        });
 
         bTrainingmode.setOnClickListener(new View.OnClickListener()
         {

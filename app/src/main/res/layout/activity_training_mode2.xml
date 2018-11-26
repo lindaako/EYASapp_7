@@ -15,30 +15,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/assessementkorpic"
+        app:srcCompat="@drawable/four"
         tools:Absolutelayout_editor_absoluteX="0dp"
         tools:Absolutelayout_editor_absoluteY="-6dp" />
 
     <Button
         android:id="@+id/bExit"
-        android:layout_width="101dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="570dp"
-        android:layout_marginBottom="14dp"
-        android:alpha="0.5"
+        android:layout_width="35dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="540dp"
+        android:layout_marginBottom="300dp"
+        android:background="@drawable/a"
         android:onClick="clickexit"
-        android:text=""
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="238dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginBottom="16dp"
-        android:text="TextView"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="292dp"
+        android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textColor="@color/bootstrap_default"
         android:textSize="24sp"
@@ -46,46 +45,56 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text=""
-        />
+        tools:text="" />
 
     <Button
         android:id="@+id/bLogout"
-        android:layout_width="113dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="552dp"
-        android:layout_marginBottom="75dp"
-        android:alpha="0.5"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="436dp"
+        android:layout_marginBottom="300dp"
+        android:background="@drawable/j"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bBack"
+        android:layout_width="32dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="292dp"
+        android:background="@drawable/b"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bMind"
-        android:layout_width="115dp"
-        android:layout_height="275dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginBottom="46dp"
-        android:alpha="0.5"
+        android:layout_width="138dp"
+        android:layout_height="233dp"
+        android:layout_marginStart="384dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/p"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bAuditory"
-        android:layout_width="110dp"
-        android:layout_height="280dp"
-        android:layout_marginStart="255dp"
-        android:layout_marginBottom="52dp"
-        android:alpha="0.5"
+        android:layout_width="138dp"
+        android:layout_height="233dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/o"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bVision"
-        android:layout_width="112dp"
-        android:layout_height="280dp"
-        android:layout_marginStart="403dp"
-        android:layout_marginBottom="52dp"
-        android:alpha="0.5"
+        android:layout_width="138dp"
+        android:layout_height="233dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/n"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
