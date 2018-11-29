@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         private ProgressDialog pd;
         private ProgressDialog em;
         private AlertDialog.Builder alert;
+        private AlertDialog.Builder exit_declaration;
 
 
         public static class Singleton
@@ -126,10 +127,10 @@ public class LoginActivity extends AppCompatActivity {
 
                     alert = new AlertDialog.Builder(mcontext);
                     edittext = new EditText(LoginActivity.this);
-                    alert.setMessage("Enter the email address associated with your account to get a verification code");
-                    alert.setTitle("Forgot password ");
+                    alert.setMessage("인증 코드를 받으려면 계정과 연결된 이메일 주소를 입력하십시오.");
+                    alert.setTitle("비밀번호를 잊으 셨나요");
                     alert.setView(edittext);
-                    alert.setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                    alert.setPositiveButton("잇다", new DialogInterface.OnClickListener()
                     {
                         public void onClick(DialogInterface dialog, int whichButton)
                         {
@@ -138,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
 
-                    alert.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+                    alert.setNegativeButton("뒤로", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int whichButton)
                         {
@@ -249,7 +250,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-             sender = new GMailSender("noreply.eyasapp@gmail.com", "YBqak56jKj6xtLx");
+             //sender = new GMailSender("noreply.eyasapp@gmail.com", "YBqak56jKj6xtLx");
+			 sender = new GMailSender("mobileappeyas@gmail.com", "YBqak56jKj6xtLx");
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -320,16 +322,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 String user_email = e_mail.getString();
 
-                String subject = "Your password reset code";
-                String messages = "Dear User,"+ '\n'+'\n'+
-                        "Your password reset code is " + code + " .Enter it within 5 minutes or it will expire" + '\n'+'\n'+
-                        "Best Regards," + '\n'+
+                String subject = "비밀번호 재설정 코드 (Password reset code)";
+                String messages = "안녕하세요!"+ '\n'+'\n'+
+                        "비밀번호 재설정 코드 " + code + '\n'+'\n'+
+                        "드림," + '\n'+
                         "EYAS team";
 
 
                 // Add subject, Body, your mail Id, and receiver mail Id.
 
-                sender.sendMail(subject, messages, "noreply.eyasapp@gmail.com", user_email);
+                sender.sendMail(subject, messages, "mobileappeyas@gmail.com", user_email);
 
 
 
@@ -458,8 +460,30 @@ public class LoginActivity extends AppCompatActivity {
 
     public void clickexit(View v)
     {
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
+
+        exit_declaration = new AlertDialog.Builder(this);
+        exit_declaration.setMessage("종료 하시겠습니까?");
+        exit_declaration.setPositiveButton("예", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+
+            }
+        });
+
+        exit_declaration.setNegativeButton("아니", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                dialog.cancel();
+            }
+        });
+
+        exit_declaration.show();
+
+
     }
 }

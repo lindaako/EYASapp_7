@@ -1,5 +1,6 @@
 package com.example.tewq.eyasapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,8 +38,8 @@ public class AuditoryActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 //Go to first game
-                /*Intent backIntent = new Intent(AuditoryActivity.this, UserActivity.class);
-                AuditoryActivity.this.startActivity(backIntent);*/
+                Intent intent1 = new Intent(AuditoryActivity.this, Audio_1.class);
+                AuditoryActivity.this.startActivity(intent1);
             }
         });
 
@@ -48,8 +49,8 @@ public class AuditoryActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 //Go to second game
-                /*Intent backIntent = new Intent(AuditoryActivity.this, UserActivity.class);
-                AuditoryActivity.this.startActivity(backIntent);*/
+                Intent intent2 = new Intent(AuditoryActivity.this, Audio_2.class);
+                AuditoryActivity.this.startActivity(intent2);
             }
         });
     }

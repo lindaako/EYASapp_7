@@ -37,8 +37,8 @@ public class VisualActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 //Go to first game
-                /*Intent backIntent = new Intent(VisualActivity.this, UserActivity.class);
-                VisualActivity.this.startActivity(backIntent);*/
+                Intent visual_Intent1 = new Intent(VisualActivity.this, Visual_1.class);
+                VisualActivity.this.startActivity(visual_Intent1);
             }
         });
 
@@ -48,8 +48,8 @@ public class VisualActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 //Go to second game
-                /*Intent backIntent = new Intent(VisualActivity.this, UserActivity.class);
-                VisualActivity.this.startActivity(backIntent);*/
+                Intent visual_Intent2 = new Intent(VisualActivity.this, Visual_2.class);
+                VisualActivity.this.startActivity(visual_Intent2);
             }
         });
     }

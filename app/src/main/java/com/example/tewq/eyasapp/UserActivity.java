@@ -31,7 +31,8 @@ public class UserActivity extends AppCompatActivity
 {
 
     Button bAssessmentmode,bTrainingmode,bResults,bLogout,bBack;
-
+    private AlertDialog.Builder exit_declaration;
+    private AlertDialog.Builder logout_declaration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,8 +63,30 @@ public class UserActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent logoutIntent = new Intent(UserActivity.this, LoginActivity.class);
-                UserActivity.this.startActivity(logoutIntent);
+                logout_declaration = new AlertDialog.Builder(UserActivity.this);
+                logout_declaration.setMessage("로그 아웃 하시겠습니까?");
+                logout_declaration.setPositiveButton("예", new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int whichButton)
+                    {
+
+                        Intent logoutIntent = new Intent(UserActivity.this, LoginActivity.class);
+                        UserActivity.this.startActivity(logoutIntent);
+
+                    }
+                });
+
+                logout_declaration.setNegativeButton("아니", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int whichButton)
+                    {
+                        dialog.cancel();
+                    }
+                });
+
+                logout_declaration.show();
+
+
             }
         });
 
@@ -106,8 +129,30 @@ public class UserActivity extends AppCompatActivity
 
     public void clickexit(View v)
     {
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
+
+        exit_declaration = new AlertDialog.Builder(UserActivity.this);
+        exit_declaration.setMessage("종료 하시겠습니까?");
+        exit_declaration.setPositiveButton("예", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+
+            }
+        });
+
+        exit_declaration.setNegativeButton("아니", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                dialog.cancel();
+            }
+        });
+
+        exit_declaration.show();
+
+
     }
 }

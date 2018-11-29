@@ -38,8 +38,9 @@ public class ForgotPasswordActivity extends AppCompatActivity
     LoginActivity.Singleton e_mail=LoginActivity.Singleton.getInstance();
     final String user_email = e_mail.getString();
     EditText etEmail, etPassResetCode,etNewPassword;
-    Button bResetPassword;
+    Button bResetPassword,bBack;
     private Snackbar snackbar;   private ProgressDialog pd;
+    private AlertDialog.Builder exit_declaration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,8 +54,18 @@ public class ForgotPasswordActivity extends AppCompatActivity
         etPassResetCode =  findViewById(R.id.etPassResetCode);
         etNewPassword =  findViewById(R.id.etNewPassword);
         bResetPassword = findViewById(R.id.bResetPassword);
+        bBack = findViewById(R.id.bBack);
 
 
+        bBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                Intent backIntent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                ForgotPasswordActivity.this.startActivity(backIntent);
+            }
+        });
         bResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +180,34 @@ public class ForgotPasswordActivity extends AppCompatActivity
                 .show();
     }
 
+    public void clickexit(View v)
+    {
 
+        exit_declaration = new AlertDialog.Builder(this);
+        exit_declaration.setMessage("종료 하시겠습니까?");
+        exit_declaration.setPositiveButton("예", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+
+            }
+        });
+
+        exit_declaration.setNegativeButton("아니", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                dialog.cancel();
+            }
+        });
+
+        exit_declaration.show();
+
+
+    }
 
 
     }

@@ -58,8 +58,14 @@
         <activity
             android:name=".AuditoryActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".ResultsActivity" />
+        <activity android:name=".Visual_1" />
+        <activity android:name=".Visual_2" />
+        <activity android:name=".Audio_1" />
+        <activity android:name=".Audio_2" />
+        <activity android:name=".Information_1" />
+        <activity android:name=".Information_2"></activity>
     </application>
 
 </manifest>

@@ -36,8 +36,9 @@ public class MindActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 //Go to first game
-                /*Intent backIntent = new Intent(MindActivity.this, UserActivity.class);
-                MindActivity.this.startActivity(backIntent);*/
+                Intent info_1 = new Intent(MindActivity.this,Information_1.class);
+                MindActivity.this.startActivity(info_1);
+
             }
         });
 
@@ -47,8 +48,8 @@ public class MindActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 //Go to second game
-                /*Intent backIntent = new Intent(MindActivity.this, UserActivity.class);
-                MindActivity.this.startActivity(backIntent);*/
+                Intent info_2 = new Intent(MindActivity.this,Information_2.class);
+                MindActivity.this.startActivity(info_2);
             }
         });
     }

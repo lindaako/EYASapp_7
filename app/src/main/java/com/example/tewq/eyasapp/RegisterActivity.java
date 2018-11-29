@@ -1,7 +1,9 @@
 package com.example.tewq.eyasapp;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
     AwesomeText show_hide_ic;
     boolean pwd_status = true;
     RadioButton radioButton2;private Snackbar snackbar;   private ProgressDialog pd;
+    private AlertDialog.Builder exit_declaration;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,9 +203,31 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void clickexit(View v)
     {
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
+
+        exit_declaration = new AlertDialog.Builder(this);
+        exit_declaration.setMessage("종료 하시겠습니까?");
+        exit_declaration.setPositiveButton("예", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+
+            }
+        });
+
+        exit_declaration.setNegativeButton("아니", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                dialog.cancel();
+            }
+        });
+
+        exit_declaration.show();
+
+
     }
 }
 
