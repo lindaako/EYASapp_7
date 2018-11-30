@@ -117,10 +117,10 @@ public class UserActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                /*
-                Intent trainingIntent = new Intent(UserActivity.this, TrainingModeActivity2.class);
-                UserActivity.this.startActivity(trainingIntent);
-                */
+
+                Intent resultsIntent = new Intent(UserActivity.this, ResultsActivity.class);
+                UserActivity.this.startActivity(resultsIntent);
+
             }
         });
     }
